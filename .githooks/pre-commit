@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+
+# Cores
+SCor='\033[0m'
+CVerm='\033[1;31m'
+CAmar='\033[1;33m'
+CRoxo='\033[1;34m'
+
+if ! docker info > /dev/null 2>&1; then
+    echo "${CVerm}Docker não está rodando. Inicie o Docker e tente novamente.${SCor}"
+    exit 1
+fi
+
+if [ -z "$(docker compose ps -q php)" ] || [ -z "$(docker ps -q --no-trunc | grep $(docker compose ps -q php))" ]; then
+    echo "${CVerm}O container do serviço 'php' não está em execução.${SCor}"
+    exit 1
+fi;
+
+docker compose exec -T php vendor/bin/phpstan analyse --memory-limit=512M
+if [ $? -ne 0 ]; then
+    echo "${CVerm}Erro!${SCor} Deu ruim aqui com ${CAmar}PHPStan${SCor}. Arrume antes de continuar..."
+    exit 1
+fi;
+
+docker compose exec -T php vendor/bin/phpunit 
+if [ $? -ne 0 ]; then
+    echo "${CVerm}Erro!${SCor} Deu ruim aqui com o ${CRoxo}PHPUnit${SCor}. Arrume antes de continuar...";
+    exit 1;
+fi;
