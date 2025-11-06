@@ -16,3 +16,9 @@ docker compose up --wait
 ```sh
 git config core.hooksPath .githooks
 ```
+
+### 4. Crie o `.env.local`
+
+```sh
+cp api/.env api/.env.local
+```

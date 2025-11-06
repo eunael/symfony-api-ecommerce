@@ -2,9 +2,7 @@
 
 namespace App\Tests\Api;
 
-use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
-
-class GreetingsTest extends ApiTestCase
+class GreetingsTest extends CustomApiTestCase
 {
     public function testCreateGreeting(): void
     {
