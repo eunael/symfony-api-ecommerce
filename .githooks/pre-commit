@@ -22,7 +22,13 @@ if [ $? -ne 0 ]; then
     exit 1
 fi;
 
-docker compose exec -T php vendor/bin/phpunit 
+docker compose exec -T php vendor/bin/phpunit
+if [ $? -ne 0 ]; then
+    echo "${CVerm}Erro!${SCor} Deu ruim aqui com o ${CRoxo}PHPUnit${SCor}. Arrume antes de continuar...";
+    exit 1;
+fi;
+
+docker compose exec -T php ./vendor/bin/php-cs-fixer fix src --allow-risky=yes
 if [ $? -ne 0 ]; then
     echo "${CVerm}Erro!${SCor} Deu ruim aqui com o ${CRoxo}PHPUnit${SCor}. Arrume antes de continuar...";
     exit 1;
