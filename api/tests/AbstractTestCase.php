@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Api;
+namespace App\Tests;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 
-class CustomApiTestCase extends ApiTestCase
+abstract class AbstractTestCase extends ApiTestCase
 {
     protected static ?bool $alwaysBootKernel = false;
 

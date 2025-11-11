@@ -1,8 +1,11 @@
 <?php
 
 $finder = (new PhpCsFixer\Finder())
-    ->in(__DIR__)
+    ->in(__DIR__ . '/src')
+    ->in(__DIR__ . '/tests')
     ->exclude('var')
+    ->exclude('vendor')
+    ->name('*.php')
 ;
 
 return (new PhpCsFixer\Config())

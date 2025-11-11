@@ -13,6 +13,9 @@
             "src/ApiResource/.gitignore"
         ]
     },
+    "dama/doctrine-test-bundle": {
+        "version": "v8.3.1"
+    },
     "doctrine/deprecations": {
         "version": "1.1",
         "recipe": {
@@ -35,6 +38,9 @@
             "src/Entity/.gitignore",
             "src/Repository/.gitignore"
         ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "4.3.0"
     },
     "doctrine/doctrine-migrations-bundle": {
         "version": "3.3",
@@ -83,6 +89,21 @@
         },
         "files": [
             "phpstan.dist.neon"
+        ]
+    },
+    "phpunit/phpunit": {
+        "version": "12.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "11.1",
+            "ref": "c6658a60fc9d594805370eacdf542c3d6b5c0869"
+        },
+        "files": [
+            ".env.test",
+            "phpunit.xml.dist",
+            "tests/bootstrap.php",
+            "bin/phpunit"
         ]
     },
     "symfony/console": {
@@ -261,5 +282,8 @@
             "config/packages/web_profiler.yaml",
             "config/routes/web_profiler.yaml"
         ]
+    },
+    "zenstruck/foundry": {
+        "version": "v2.8.0"
     }
 }
